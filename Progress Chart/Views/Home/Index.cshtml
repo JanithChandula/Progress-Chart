@@ -1,9 +1,68 @@
-﻿@{
-    var myChart = new Chart(width: 600, height: 400)
-        .AddTitle("Chart Title")
-        .AddSeries(
-            name: "Employee",
-            xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
-            yValues: new[] { "2", "10", "4", "5", "3" })
-        .Write();
-}
+﻿<div>
+    <canvas id="myChart"></canvas>
+</div>
+<div>
+    <p>
+        @ViewBag.REP
+
+        @ViewBag.STATUS
+        @ViewBag.NUM[2]
+        
+    </p>
+</div>
+<script>
+
+
+
+   
+
+</script>
+  
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var num1 = @Html.Raw(Json.Encode(ViewBag.REP));
+    var status = [@Html.Raw(Json.Encode(ViewBag.STATUS))];
+    var ct = [@Html.Raw(Json.Encode(ViewBag.CT))];
+    var chartData = [@Html.Raw(Json.Encode(ViewBag.Data))];
+    console.log(chartData);
+    debugger;
+    const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+
+    ];
+
+    const data = {
+        labels: ct,
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+        },
+        {
+            label: 'My Second dataset',
+            backgroundColor: 'rgb(99, 255, 132)',
+            borderColor: 'rgb(99, 255, 132)',
+            data: num1,
+        }
+        ]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+</script>
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
