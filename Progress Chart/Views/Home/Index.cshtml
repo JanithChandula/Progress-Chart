@@ -25,7 +25,10 @@
     var status = [@Html.Raw(Json.Encode(ViewBag.STATUS))];
     var ct = [@Html.Raw(Json.Encode(ViewBag.CT))];
     var chartData = [@Html.Raw(Json.Encode(ViewBag.Data))];
+    var DateCount = [@Html.Raw(Json.Encode(ViewBag.DateCount))];
     console.log(chartData);
+  
+    console.log(DateCount);
     debugger;
     const labels = [
         'January',
@@ -36,28 +39,52 @@
         'June',
 
     ];
+    
+    console.log(labels2);
+    for (const num of DateCount) {
+        console.log(num);
+    }
 
     const data = {
-        labels: ct,
+        labels: ct[0],
         datasets: [{
-            label: 'My First dataset',
+            label: 'Deleted',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        },
-        {
-            label: 'My Second dataset',
-            backgroundColor: 'rgb(99, 255, 132)',
-            borderColor: 'rgb(99, 255, 132)',
-            data: num1,
+            data: DateCount[0],
         }
+            
         ]
     };
 
     const config = {
         type: 'line',
         data: data,
-        options: {}
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Tasks'
+                }
+            },
+
+            scales: {
+                y: {
+                    beginAtZero: true
+                    ,
+                    title: {
+                        display: true,
+                        text: 'Count'
+                    }
+                }
+            }
+
+        },
+        
     };
 </script>
 <script>

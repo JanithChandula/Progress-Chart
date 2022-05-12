@@ -75,6 +75,17 @@ namespace Progress_Chart.Controllers
                 {
                     repartitions.Add(chartData.Count(x => x.TaskStatus == item));
                 }
+                // counting distinct dates in chart data
+                List<int> DateCount = new List<int>();
+                foreach (var item in CreatedDate)
+                {
+                    DateCount.Add(chartData.Count(x => x.CreatedTime == item));
+                }
+
+
+
+                // end 
+
                 var rep = repartitions;
                 ViewBag.CT = CreatedDate;
                 ViewBag.STATUS = status;
@@ -82,6 +93,7 @@ namespace Progress_Chart.Controllers
                 List<int> num = new List<int>() { 1, 2, 3, 4 };
                 ViewBag.NUM = num;
                 ViewBag.Data = chartData;
+                ViewBag.DateCount = DateCount;
 
 
             }
