@@ -3,10 +3,6 @@
 </div>
 <div>
     <p>
-        @ViewBag.REP
-
-        @ViewBag.STATUS
-        @ViewBag.NUM[2]
         
     </p>
 </div>
@@ -21,39 +17,61 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    var num1 = @Html.Raw(Json.Encode(ViewBag.REP));
-    var status = [@Html.Raw(Json.Encode(ViewBag.STATUS))];
-    var ct = [@Html.Raw(Json.Encode(ViewBag.CT))];
-    var chartData = [@Html.Raw(Json.Encode(ViewBag.Data))];
-    var DateCount = [@Html.Raw(Json.Encode(ViewBag.DateCount))];
-    console.log(chartData);
-  
-    console.log(DateCount);
-    debugger;
-    const labels = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
 
-    ];
     
-    
-    for (const num of DateCount) {
-        console.log(num);
-    }
+
+    var dates = [@Html.Raw(Json.Encode(ViewBag.dates))];
+    var DeletedCount = [@Html.Raw(Json.Encode(ViewBag.DeletedCount))];
+    var ApprovedCount = [@Html.Raw(Json.Encode(ViewBag.ApprovedCount))];
+    var ClosedCount = [@Html.Raw(Json.Encode(ViewBag.ClosedCount))];
+    var OngoingCount = [@Html.Raw(Json.Encode(ViewBag.OngoingCount))];
+    var NewCount = [@Html.Raw(Json.Encode(ViewBag.NewCount))];
+    var ToBeAccepetdCount = [@Html.Raw(Json.Encode(ViewBag.ToBeAccepetdCount))];
+
+
+
+
+
 
     const data = {
-        labels: ct[0],
+        labels: dates[0],
         datasets: [{
             label: 'Deleted',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: DateCount[0],
-        }
-            
+            data: DeletedCount[0],
+        },
+            {
+                label: 'Approved',
+                backgroundColor: 'rgb(0,192, 0)',
+                borderColor: 'rgb(0,192, 0)',
+                data: ApprovedCount[0],
+            },
+            {
+                label: 'Closed',
+                backgroundColor: 'rgb(128, 128, 128)',
+                borderColor: 'rgb(128,128, 128)',
+                data: ClosedCount[0],
+            },
+            {
+                label: 'Ongoing',
+                backgroundColor: 'rgb(0, 32, 255)',
+                borderColor: 'rgb(0, 32, 255)',
+                data: OngoingCount[0],
+            },
+            {
+                label: 'New',
+                backgroundColor: 'rgb(80, 208, 255)',
+                borderColor: 'rgb(80, 208, 255)',
+                data: NewCount[0],
+            },
+            {
+                label: 'To be Accepted',
+                backgroundColor: 'rgb(90, 255, 128)',
+                borderColor: 'rgb(90, 255, 128)',
+                data: ToBeAccepetdCount[0],
+            },
+
         ]
     };
 
@@ -84,7 +102,7 @@
             }
 
         },
-        
+
     };
 </script>
 <script>
