@@ -16,13 +16,13 @@ namespace Repositories
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
 
-        public TasksModel GetData()
+        public List<TasksModel> GetData()
         {
             TasksModel task1 = new TasksModel();
 
             try
             {
-                string Query = "select CreatedTime,TaskStatus from sites.tasks where Id > 1 AND Id < 19";
+                string Query = "select CreatedTime ,TaskStatus from sites.tasks ";
                 List<TasksModel> chartData = new List<TasksModel>();
                 using (var connection = new MySqlConnection(ConnectionstringMaster))
 
@@ -35,13 +35,10 @@ namespace Repositories
                         {
                             while (sdr.Read())
                             {
-                                //task1.CreatedTime = sdr["CreatedTime"];
-                                //task1 = (string)sdr["TaskStatus"];
-                                //var task2 = sdr["TaskStatus"].ToList();
-                                //return sdr["TaskStatus"];
+
                                 chartData.Add(new TasksModel
                                 {
-                                    CreatedTime = sdr["CreatedTime"].ToString(),
+                                    CreatedTime = (sdr["CreatedTime"].ToString()).Split(' ')[0],
                                     TaskStatus = sdr["TaskStatus"].ToString()
                                 });
 
@@ -52,13 +49,13 @@ namespace Repositories
 
 
                 }
-                return task1;
+                return chartData;
             }
             catch (Exception e)
             {
                 Logger.Info("inside Exception Repo Userregistration  " + e.ToString());
-
-                return task1;
+                List<TasksModel> chartData = new List<TasksModel>();
+                return chartData;
             }
 
         }
