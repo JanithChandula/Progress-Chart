@@ -40,7 +40,9 @@ namespace Progress_Chart.Controllers
             
                 string Query = "select CreatedTime ,TaskStatus from sites.tasks where TaskStatus='Deleted'";
                 List<TasksModel> chartData = new List<TasksModel>();
-                using (var connection = new MySqlConnection(ConnectionstringMaster))
+                List<TasksModel> DeletedData = new List<TasksModel>();
+
+            using (var connection = new MySqlConnection(ConnectionstringMaster))
 
                 {
 
@@ -66,6 +68,11 @@ namespace Progress_Chart.Controllers
                         }
                     }
                 
+//         getting deleted data
+
+
+
+
                 var CreatedDate = chartData.Select(x => x.CreatedTime).Distinct();
 
                 List<int> repartitions = new List<int>();
