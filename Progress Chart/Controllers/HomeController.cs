@@ -33,7 +33,7 @@ namespace Progress_Chart.Controllers
         public ActionResult Index()
              
         {
-            ViewBag.Title = "Task";
+            ViewBag.Title = "Tasks";
             
            
             
