@@ -29,10 +29,6 @@ namespace Progress_Chart.Controllers
         }
 
 
-       
-
-
-       
 
         public ActionResult Index()
              

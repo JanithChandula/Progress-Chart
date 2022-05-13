@@ -11,7 +11,7 @@ namespace Common
        
         public string CreatedTime { get; set; }
         public string TaskStatus { get; set; }
-        public int Count { get; set; }
+       
 
     }
 }
