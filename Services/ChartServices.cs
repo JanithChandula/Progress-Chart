@@ -109,7 +109,7 @@ namespace Services
             // counting ToBeAccepetd values in each date
             chartData = _taskRepository.GetData();
             var CreatedDate = chartData.Select(x => x.CreatedTime).Distinct();
-            var ToBeAccepetdList = chartData.FindAll(x => x.TaskStatus == "TobeAccepted");
+            var ToBeAccepetdList = chartData.FindAll(x => x.TaskStatus == "TobeAccept");
 
             List<int> ToBeAccepetdCount = new List<int>();
             foreach (var item in CreatedDate)
